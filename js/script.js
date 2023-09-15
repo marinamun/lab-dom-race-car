@@ -12,32 +12,25 @@ window.onload = function () {
     game = new Game();
     game.start();
   }
-
-  function handleKeydown(event) {
-    const key = event.key;
-    const possibleKeystrokes = [
-      "ArrowLeft",
-      "ArrowUp",
-      "ArrowRight",
-      "ArrowDown",
-    ];
-    if (possibleKeystrokes.includes(key)) {
-      event.preventDefault;
-
-      switch (key) {
-        case "ArrowLeft":
-          game.player.directionX = -1;
-          break;
-        case "ArrowUp":
-          game.player.directionY = -1;
-        case "ArrowRight":
-          game.player.directionX = 1;
-          break;
-        case "ArrowDown":
-          game.player.directionY = 1;
-          break;
-      }
+  document.addEventListener("keydown", (event) => {
+    if (event.code === "ArrowLeft") {
+      game.player.directionX = -1;
+    } else if (event.code === "ArrowRight") {
+      game.player.directionX = 1;
     }
-  }
-  window.addEventListener("keydown", handleKeydown);
+    if (event.code === "ArrowUp") {
+      game.player.directionY = -1;
+    } else if (event.code === "ArrowDown") {
+      game.player.directionY = 1;
+    }
+  });
+
+  document.addEventListener("keyup", (event) => {
+    if (event.code === "ArrowLeft" || event.code === "ArrowRight") {
+      game.player.directionX = 0;
+    }
+    if (event.code === "ArrowUp" || event.code === "ArrowDown") {
+      game.player.directionY = 0;
+    }
+  });
 };

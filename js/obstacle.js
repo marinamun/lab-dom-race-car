@@ -1,10 +1,10 @@
 class Obstacle {
-  constructor(gameScreen) {
+  constructor(gameScreen, left, top, height, width) {
     this.gameScreen = gameScreen;
-    this.left = Math.floor(Math.random() * 300 + 70);
-    this.top = 600;
-    this.width = 100;
-    this.height = 150;
+    this.left = left;
+    this.top = top;
+    this.width = width;
+    this.height = height;
     this.element = document.createElement("img");
 
     this.element.src = "../images/redCar.png";
@@ -17,12 +17,12 @@ class Obstacle {
 
     this.gameScreen.appendChild(this.element);
   }
-  updatePosition() {
-    this.element.style.left = `${this.left}px`;
-    this.element.style.top = `${this.top}px`;
-  }
+  
   move() {
-    this.top += 3;
     this.updatePosition();
+    this.element.style.top = `${this.top}`
+  }
+  updatePosition() {
+    this.top += 1
   }
 }

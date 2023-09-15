@@ -4,7 +4,7 @@ class Game {
     this.startScreen = document.querySelector("#game-intro");
     this.gameScreen = document.querySelector("#game-screen");
     this.gameEndScreen = document.querySelector("#game-end");
-    this.player = null;
+
     this.height = 600;
     this.width = 500;
     this.obstacles = [];
